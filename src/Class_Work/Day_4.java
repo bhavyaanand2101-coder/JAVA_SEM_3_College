@@ -1,0 +1,30 @@
+package Class_Work;
+
+import java.util.Scanner;
+
+public class Day_4 {
+
+    // Recursive method to reverse a string
+    public static String reverse(String str) {
+        // Base case: if string is empty, return it
+        if (str.isEmpty()) {
+            return str;
+        }
+
+        // Recursive step: reverse the rest of the string and append the first character at the end
+        return reverse(str.substring(1)) + str.charAt(0);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+
+        String reversedStr = reverse(input);
+
+        System.out.println("Reversed string: " + reversedStr);
+
+        sc.close();
+    }
+}
