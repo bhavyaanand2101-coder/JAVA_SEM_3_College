@@ -1,29 +1,37 @@
+// make a java code in which we have to take a number from user as a input and return the number of digits
 package Class_Work;
 
 import java.util.Scanner;
 
 public class Day_4 {
 
-    // Recursive method to reverse a string
-    public static String reverse(String str) {
-        // Base case: if string is empty, return it
-        if (str.isEmpty()) {
-            return str;
+    // Function to count digits in a number
+    public static int countDigits(long num) {
+        // Special case: 0 has 1 digit
+        if (num == 0) {
+            return 1;
         }
 
-        // Recursive step: reverse the rest of the string and append the first character at the end
-        return reverse(str.substring(1)) + str.charAt(0);
+        // Convert negative numbers to positive
+        num = Math.abs(num);
+
+        int count = 0;
+        while (num > 0) {
+            num = num / 10; // remove last digit
+            count++;        // increment count
+        }
+        return count;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a string: ");
-        String input = sc.nextLine();
+        System.out.print("Enter a number: ");
+        long number = sc.nextLong();
 
-        String reversedStr = reverse(input);
+        int digits = countDigits(number);
 
-        System.out.println("Reversed string: " + reversedStr);
+        System.out.println("Number of digits in " + number + " is: " + digits);
 
         sc.close();
     }
